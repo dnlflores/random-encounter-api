@@ -1,8 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import pokemonReducer from './pokemon';
 
 const rootReducer = combineReducers({
     // reducers go here
+    pokemon: pokemonReducer
 });
 
 const logger = require('redux-logger').default;

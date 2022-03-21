@@ -1,15 +1,26 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const HomeScreen = props => {
     const navigation = useNavigation();
 
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: false
+        });
+    }, [])
+
     return (
         <View style={styles.container}>
-            <Text style={styles.homeText}>This is the HomeScreen!</Text>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Encounter')}>
-                <Text style={styles.buttonText}>Press Me to Encounter a wild Pokémon!</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Encounter', { pokeId: Math.floor(Math.random() * 493) })}>
+                <Text style={styles.buttonText}>Encounter wild Pokémon!</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Encounter', { pokeId: 151 })}>
+                <Text style={styles.buttonText}>Encounter wild Mew!</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Encounter', { pokeId: 150 })}>
+                <Text style={styles.buttonText}>Encounter wild Mewtwo!</Text>
             </TouchableOpacity>
         </View>
     );
